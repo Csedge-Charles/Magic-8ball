@@ -10,8 +10,9 @@ app = Flask(__name__)
 @app.route('/', methods= ['GET', 'POST'])
 def hello():
     if request.method == 'POST':
+        question = request.form['question']
         print('POST')
-        return render_template('8ball.html', eightball=random.choice(answer_list))
+        return render_template('8ball.html', eightball=random.choice(answer_list), origin=question)
     return render_template('index.html')
 
 
